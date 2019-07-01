@@ -19,7 +19,7 @@ def p_index():
         ext = "mp4" if "mp4" in request.form or len(request.form) == 1 else "mp3"
         title, length = video.title, video.length
     
-        video.streams.filter(file_extension=ext).first().download(os.getcwd()+"\\temp_downloads", filename="download")
+        video.streams.filter(file_extension=ext).first().download(os.getcwd()+"\\tmp", filename="download")
         
         print("success")
     except:
@@ -33,7 +33,7 @@ def p_index():
 
 @app.route("/get_download/<ext>")
 def get_download(ext):
-    path = Path(PureWindowsPath(os.getcwd()+"\\temp_downloads\\download."+ext))
+    path = Path(PureWindowsPath(os.getcwd()+"\\tmp\\download."+ext))
     def generate():
         with open(path, encoding="utf-8", errors="ignore") as f:
             yield from f
