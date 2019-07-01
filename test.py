@@ -33,7 +33,7 @@ def p_index():
 
 @app.route("/get_download/<ext>")
 def get_download(ext):
-    return send_file("/tmp/download."+ext)
+    return send_file("/tmp/download."+ext, as_attachment=True)
     '''path = Path(PureWindowsPath(os.getcwd()+"\\temp_downloads\\download."+ext))
     def generate():
         with open(path, encoding="utf-8", errors="ignore") as f:
