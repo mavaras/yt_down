@@ -19,7 +19,7 @@ def p_index():
         ext = "mp4" if "mp4" in request.form or len(request.form) == 1 else "mp3"
         title, length = video.title, video.length
     
-        video.streams.filter(file_extension=ext).first().download("/tmp/download."+ext, filename="download")
+        video.streams.filter(file_extension=ext).first().download("/tmp", filename="download")  # os.getcwd()+"\\temp_downloads"
         
         print("success")
     except:
