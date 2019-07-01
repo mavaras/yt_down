@@ -18,11 +18,11 @@ def p_index():
         video = YouTube(link)
         ext = "mp4" if "mp4" in request.form or len(request.form) == 1 else "mp3"
         title, length = video.title, video.length
-        
+        video.streams.filter(file_extension=ext).first().download("/tmp", filename="download")  # os.getcwd()+"\\temp_downloads"    
         print("success")
     except:
         pass
-    video.streams.filter(file_extension=ext).first().download("/tmp", filename="download")  # os.getcwd()+"\\temp_downloads"
+    
     return render_template("index.html", link=link,
                                          title=title,
                                          length=length,
