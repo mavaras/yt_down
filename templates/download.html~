@@ -1,0 +1,14 @@
+{% extends "schema.html" %}
+
+{% block content %}
+	<h1>YT Down</h1><hr><br>
+	<h2>{{fname}}</h2>
+	
+	<div id="div_dwn">
+	  <a href="/dwn">
+		<button class="btn btn-outline-secondary"
+				onclick="send_link()"
+				type="button">Download</button>
+		</a>
+	</div>
+{% endblock %}

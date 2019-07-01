@@ -1,0 +1,115 @@
+{% extends "schema.html" %}
+
+{% block content %}
+	<h1>YT Down</h1><hr><br>
+	
+	<div class="input-group mb-3">
+	  <form action = "/" method = "POST" style="width:100%">
+		<div class="form-row align-items-center">
+		  <div class="col">
+			<input id="input_link"
+				   type="text"
+				   name="link"
+				   class="form-control"
+				   placeholder="Video link"
+				   aria-label="Recipient's username"
+				   aria-describedby="basic-addon2">
+			</div>
+
+		  <div class="btn-group btn-group-toggle" data-toggle="buttons">
+		  <label class="btn btn-outline-secondary active">
+			<input type="radio" name="mp4" id="option1" autocomplete="off">MP4
+		  </label>
+		  <label class="btn btn-outline-secondary">
+			<input type="radio" name="mp3" id="option2" autocomplete="off">MP3
+		  </label>
+		</div>
+			
+		  <div class="col-auto my-1">
+		    <div class="input-group-append">
+		      <a target="blank">
+			    <button class="btn btn-outline-secondary"
+
+			  		    type="submit">
+			    <i class="fa fa-download"></i> Go</button>
+		      </a>
+		    </div>
+		  </div>
+	    </div>
+	  </form>
+	</div>
+
+	<div id="algo2" style="width: 100%;background-color: #ddd">
+	  <div id="algo" style="width: 1%;height: 20px;background-color: #4CAF50"></div>
+	</div>
+
+	  <!--<form action = "/download" method = "POST">
+         <p>Maths <input type = "text" name = "algo" /></p>
+         <p><input type = "submit" value = "submit" /></p>
+      </form>-->
+	  
+	<h2>{{foo}}</h2>
+	<hr><br>
+
+	<div id="div_dwn" {{flag}}>
+	  <div class="card" style="width: 100%;">
+		  <div class="card-body">
+			<h5 class="card-title">Download ready</h5>
+			<p class="card-text">link: {{link}}</p>
+			<hr>
+			<p class="card-text">Title: {{title}}</p>
+			<p class="card-text">Duration: {{length}}</p>
+			<p class="card-text">Format: {{ext}}</p>
+			<a href="/get_download/{{ext}}">
+			  <button class="btn btn-outline-secondary" type="button">Download</button>
+			</a>
+		  </div>
+		</div>
+	</div>
+	<script>
+	  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+
+// Initialize popover component
+$(function () {
+  $('[data-toggle="popover"]').popover()
+})
+	// document.getElementById("div_dwn").style.visibility = "hidden";
+
+	function show_card() {
+	  document.getElementById("div_dwn").style.visibility =
+	  document.getElementById("div_dwn").style.visibility == "visible" ?
+	  "hidden" : "visible";	
+	}
+	
+	function move() {
+	  var elem = document.getElementById("algo");
+	  var width = 1;
+	  while (1) {
+		var id = setInterval(frame, 10);
+		function frame() {
+		  if (width >= 100) {
+			clearInterval(id);
+		  } else {
+			width++; 
+			elem.style.width = width + '%'; 
+		  }
+		}
+	  }
+	}
+  function send_link() {
+	var link = document.getElementById("input_link").value;
+	  $.post("/", {link: link}, function (data) {
+		  
+	  }).done(function() {
+		  console.log(document.getElementById("div_dwn").style.visibility);
+		  document.getElementById("div_dwn").style.visibility =
+		  document.getElementById("div_dwn").style.visibility == "visible" ?
+		  "hidden" : "visible";
+		  // location.reload();
+	  });
+  }
+  </script>
+{% endblock %}
+
