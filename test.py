@@ -17,6 +17,7 @@ def g_index():
 
 @app.route("/", methods = ["POST"])
 def p_index():
+<<<<<<< HEAD
     print(request.form)
     
     link = request.form["link"]
@@ -31,6 +32,17 @@ def p_index():
         clip.audio.write_audiofile("/tmp/download.mp3")
 
     print("success")
+=======
+    try:
+        link = request.form["link"]
+        video = YouTube(link)
+        ext = "mp4" if "mp4" in request.form or len(request.form) == 1 else "mp3"
+        title, length = video.title, video.length
+        video.streams.filter(file_extension=ext).first().download("/tmp", filename="download")  # os.getcwd()+"\\temp_downloads"    
+        print("success")
+    except:
+        pass
+>>>>>>> 011d833272f87bc47fcea6c6f078144d0ec88296
     
     return render_template("index.html", link=link,
                                          title=title,
