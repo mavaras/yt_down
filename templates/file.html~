@@ -1,4 +1,0 @@
-{% extends "schema.html" %}
-
-{% block content %}
-{% endblock %}

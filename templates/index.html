@@ -1,8 +1,20 @@
-{% extends "schema.html" %}
+<html>
+  <head>
+	<title>YT Down</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	  <!-- Popper -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 
-{% block content %}
-	<h1>YT Down</h1><hr><br>
-	
+<!-- Latest compiled and minified Bootstrap JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+<div class="jumbotron" style="height: 100%;">
+	<h2 class="card-title h2 text-center" style="margin-top: 8%">YT Down</h1><br>
+	<div class="row d-flex justify-content-center"><div class="col-xl-5 pb-2">
 	<div class="input-group mb-3">
 	  <form action = "/" method = "POST" style="width:100%">
 		<div class="form-row align-items-center">
@@ -17,41 +29,42 @@
 			</div>
 
 		  <div class="btn-group btn-group-toggle" data-toggle="buttons">
-		  <label class="btn btn-outline-secondary active">
-			<input type="radio" name="mp4" id="option1">MP4</input>
-		  </label>
-		  <label class="btn btn-outline-secondary">
-			<input type="radio" name="mp3" id="option2">MP3</input>
-		  </label>
-		</div>
+			  <label class="btn btn-outline-dark active">
+				<input type="radio" name="mp4" id="option1">MP4</input>
+			  </label>
+			  <label class="btn btn-outline-dark">
+				<input type="radio" name="mp3" id="option2">MP3</input>
+			  </label>
+		  </div>
 			
 		  <div class="col-auto my-1">
 		    <div class="input-group-append">
 		      <a target="blank">
-			    <button class="btn btn-outline-secondary"
-
+			    <button class="btn btn-outline-dark waves-effect"
+						onclick="start_progressbar()"
 			  		    type="submit">
 			    <i class="fa fa-download"></i> Go</button>
 		      </a>
 		    </div>
 		  </div>
+
 	    </div>
 	  </form>
-	</div>
+	</div></div></div>
 
-	<div id="algo2" style="width: 100%;background-color: #ddd">
-	  <div id="algo" style="width: 1%;height: 20px;background-color: #4CAF50"></div>
+	<div class="progress">
+	  <div id="progress" class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
 	</div>
-
+	
+	<progress value="100" max="100"></progress>
 	  <!--<form action = "/download" method = "POST">
          <p>Maths <input type = "text" name = "algo" /></p>
          <p><input type = "submit" value = "submit" /></p>
       </form>-->
 	  
-	<h2>{{foo}}</h2>
-	<hr><br>
-
-	<div id="div_dwn" {{flag}}>
+	<hr class="my-2 col-6"><br>
+	<div class="row d-flex justify-content-center"><div class="col-xl-5 pb-2">
+      <div id="div_dwn" {{flag}}>
 	  <div class="card" style="width: 100%;">
 		  <div class="card-body">
 			<h5 class="card-title">Download ready</h5>
@@ -61,10 +74,13 @@
 			<p class="card-text">Duration: {{length}}</p>
 			<p class="card-text">Format: {{ext}}</p>
 			<a href="/get_download/{{ext}}">
-			  <button class="btn btn-outline-secondary" type="button">Download</button>
+			  <button class="btn btn-outline-dark" type="button">Download</button>
 			</a>
 		  </div>
 		</div>
+	  </div>
+	  </div></div>
+	  
 	</div>
 	<script>
 	  $(function () {
@@ -110,6 +126,46 @@ $(function () {
 		  // location.reload();
 	  });
   }
-  </script>
-{% endblock %}
+
+start_progressbar();
+  function start_progressbar() {console.log("!");
+	function loop() {
+		$(".progress-bar").animate({
+			width: "100%"
+		}, 5000, "linear", function() {console.log("...");});
+	}
+	loop();
+  }
+  /** 
+ * This code is only used for animating the progress bar
+ *     it can be safely removed
+ *     as all styling is done in CSS
+ 
+var progressVal = $('#progress').aria-valuenow(),
+    progressStep = 20,
+    progressDirection = 1;
+
+setInterval(function() {
+  console.log(progressDirection, progressVal);
+  
+  if (progressDirection > 0 && progressVal < 100) {
+    progressVal += progressStep;
+    $('#progress').aria-valuenow(progressVal);
+  } else if (progressDirection < 0 && progressVal > 0) {
+    progressVal -= progressStep;
+    $('#progress').aria-valuenow(progressVal);
+  } else if (progressVal == 100) {
+    progressDirection = -1;
+  } else if (progressVal == 0) {
+    progressDirection = 1;
+  }
+}, 500)*/
+	  
+</script>
+
+</div>
+  </body>
+</html>
+
+
 
