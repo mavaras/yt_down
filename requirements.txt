@@ -8,6 +8,8 @@ Cython==0.29.3
 decorator==4.4.0
 Django==2.2.1
 django-six==1.0.4
+ffmpeg==1.4
+ffmpeg-python==0.1.18
 Flask==1.0.3
 future==0.17.1
 gunicorn==19.9.0
@@ -34,6 +36,7 @@ proglog==0.1.9
 PyAutoGUI==0.9.44
 pycodestyle==2.5.0
 pydocstyle==3.0.0
+pyee==6.0.0
 pyflakes==2.1.1
 PyGetWindow==0.0.5
 pylint==2.3.1
@@ -41,6 +44,7 @@ PyMsgBox==1.0.6
 pynput==1.4.2
 PyRect==0.1.4
 PyScreeze==0.1.21
+python-ffmpeg==1.0.8
 python-jsonrpc-server==0.1.2
 python-language-server==0.26.1
 pytube==9.5.1
