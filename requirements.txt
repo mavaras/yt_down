@@ -6,8 +6,6 @@ Click==7.0
 colorama==0.4.1
 Cython==0.29.3
 decorator==4.4.0
-Django==2.2.1
-django-six==1.0.4
 ffmpeg==1.4
 ffmpeg-python==0.1.18
 Flask==1.0.3
