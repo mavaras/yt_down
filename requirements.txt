@@ -12,8 +12,6 @@ Flask==1.0.3
 future==0.17.1
 gunicorn==19.9.0
 idna==2.8
-imageio==2.5.0
-imageio-ffmpeg==0.3.0
 importlib-metadata==0.17
 isort==4.3.19
 itsdangerous==1.1.0
@@ -25,13 +23,10 @@ mccabe==0.6.1
 moviepy==1.0.0
 networkx==2.3
 numpy==1.16.0
-opencv-python==4.1.0.25
 parso==0.4.0
 pathlib==1.0.1
-Pillow==6.0.0
 pluggy==0.12.0
 proglog==0.1.9
-PyAutoGUI==0.9.44
 pycodestyle==2.5.0
 pydocstyle==3.0.0
 pyee==6.0.0
@@ -41,7 +36,6 @@ pylint==2.3.1
 PyMsgBox==1.0.6
 pynput==1.4.2
 PyRect==0.1.4
-PyScreeze==0.1.21
 python-dotenv==0.10.3
 python-ffmpeg==1.0.8
 python-jsonrpc-server==0.1.2
